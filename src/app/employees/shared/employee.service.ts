@@ -1,8 +1,13 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Employee} from './employee.model';
+
 
 @Injectable()
 export class EmployeeService {
 
-  constructor() { }
+  selectedEmployee: Employee;
+
+  constructor() {
+  }
 
 }
