@@ -9,6 +9,7 @@ import 'rxjs/add/operator/toPromise';
 export class EmployeeService {
 
   selectedEmployee: Employee;
+  employeeList: Employee[];
 
   constructor(private http: Http) {
   }
@@ -21,6 +22,29 @@ export class EmployeeService {
     return this.http.post('http://localhost:8080/api/employee', body, requestOptions).map(x => x.json());
   }
 
+  getEmployeeList() {
+    this.http
+      .get('http://localhost:8080/api/')
+      .map((data: Response) => {
+        return data.json() as Employee[];
+      }).toPromise().then(x => {
+      this.employeeList = x;
+    });
+  }
+
+
+  putEmployee(emp) {
+
+    var body: string = JSON.stringify(emp);
+    var headerOptions = new Headers({'Content-Type': 'application/json'});
+    var requestOptions = new RequestOptions({method: RequestMethod.Put, headers: headerOptions});
+    return this.http.put('http://localhost:8080/api/employee', body, requestOptions).map(res => res.json());
+  }
+
+  deleteEmployee(id: number) {
+
+    return this.http.delete('http://localhost:8080/api/employee/' + id).map(res => res.json());
+  }
 }
 
 

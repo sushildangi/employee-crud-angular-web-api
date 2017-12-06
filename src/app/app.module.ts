@@ -8,6 +8,7 @@ import { EmployeeComponent } from './employees/employee/employee.component';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {ToastrModule} from 'ngx-toastr';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {HttpModule} from '@angular/http';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
